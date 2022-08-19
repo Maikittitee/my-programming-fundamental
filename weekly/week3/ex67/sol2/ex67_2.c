@@ -1,27 +1,42 @@
 #include<stdio.h>
 #include<string.h>
 
+int	ft_power2(int power)
+{
+	int	i;
+	int	result;
+
+
+	if (power == 0)	
+		return (1);
+	i = 0;
+	result = 1;
+	while (i < power)
+	{
+		result *= 2;
+		i++;
+	}
+	return (result);
+}
+
 void	convert(char *str)
 {
 	int	i;
-	int	j;
 	int	sum;
+	int	p;
 
 	i = 0;
-	j = 0;
-	sum = 0;
 	while (str[i])
 	{
-		sum = sum * 2 + (str[i] - '0');
-		i++;
-		if (j == 7)
+		p = 7;
+		sum = 0;
+		while (p >= 0 && str[i])
 		{
-			printf("%c",sum);
-			sum = 0;
-			j = -1;
+			sum += ft_power2(p)* (str[i] - '0');
+			p--;
+			i++;
 		}
-		j++;
-
+		printf("%c",sum);
 	}
 }
 
