@@ -42,3 +42,4 @@ int	main(int argc, char **argv)
 	scanf("%d",&nb);
 	make_butter(nb);
 }
+

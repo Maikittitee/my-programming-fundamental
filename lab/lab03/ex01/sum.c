@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include<stdio.h>
 
 int	summary(int nb)
@@ -12,7 +11,7 @@ int	summary(int nb)
 		nb /= 10;
 	}
 
-	while (nb > 9)
+	while (sum > 9)
 		sum = summary(sum);
 	return (sum);
 }
