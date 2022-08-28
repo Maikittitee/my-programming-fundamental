@@ -2,26 +2,27 @@
 #include <string.h>
 #include <stdlib.h>
 
-/*void	putbit(char *str)
+void	putbit(char *str)
 {
 	int	i;
 	int	count;
 
 	i = 0;
-	count = 1;
+	count = 0;
 	while (str[i])
 	{
-		printf("%c",str[i]);
+		printf("---count = %d---\n",count);
+		printf("{%c}",str[i]);
 		if (count == 4)
 		{
 			count = 0;
 			printf(" ");
 		}
-		count++;
 		i++;
+		count++;
 
 	}
-}*/
+}
 
 char	*strrev(char *str)
 {
@@ -31,7 +32,7 @@ char	*strrev(char *str)
 
 	i = 0;
 	len = strlen(str);
-	while (i <= len / 2)
+	while (i < len / 2)
 	{
 		temp = str[i];
 		str[i] = str[len - i - 1];
@@ -79,6 +80,7 @@ int	main(void)
 	nb = atoi(str);
 
 	putnbr_base("01",nb);
+	//printf("\n--%b--\n",nb);
 
 	//printf("%s",strrev(str));
 }
