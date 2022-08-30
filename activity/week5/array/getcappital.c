@@ -27,3 +27,4 @@ int	main()
 	getcap(str);
 	return (0);
 }
+

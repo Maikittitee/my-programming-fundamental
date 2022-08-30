@@ -28,3 +28,4 @@ int	main(void)
 		printf("%d is NOT Prime\n",nb);
 	return (0);
 }
+
