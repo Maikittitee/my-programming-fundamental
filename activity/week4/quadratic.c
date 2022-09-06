@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-int main()
+int main(int argc, char **argv)
 {
     double a, b, c, determinant, root1,root2, realPart, imaginaryPart;
     printf("Enter coefficients a, b and c: ");
@@ -20,7 +20,7 @@ int main()
         root1 = root2 = -b/2*a;
         printf("root1 = root2 = %.2lf;", root1); // (#3)
     }
-    // if roots are not real 
+    // if roots are not real
     else
     {
         realPart = -b/2*a;
