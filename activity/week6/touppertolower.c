@@ -17,6 +17,6 @@ int	main()
 			printf("%c",*p + 32);
 		else if (islower(*p))
 			printf("%c",*p - 32);
-		(p++);
+		p++;
 	}
 }
