@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
 
 typedef struct p_list{
@@ -10,22 +11,26 @@ int	main()
 {
 	t_list p[5];
 	FILE *fp;
-	t_list *ptr;
 	int i;
+	int	j;
 
 	i = 0;
 	fp = fopen("test","w");
+	//Protect file opened
 	if (!fp)
 		printf("cannot open file\n");
-	//ptr = &p1;
-	printf("Enter person 0 's name level score",i);
-	scanf("%s %d %d",p[0].name,&(p[0].lv),&(p[0].sc));
-	/*while (i < 5)
+	//loop for enter input 0-4 (5 element)
+	while (i < 5)
 	{
+		printf("Enter person %d 's name level score > ",i);
+		scanf("%s %d %d",p[i].name,&(p[i].lv),&(p[i].sc));
 		i++;
-	}*/
-	fprintf(fp,"%s %d %d\n",p[0].name,p[0].lv,p[0].sc);
-	//printf("name = %s",p[2].name);
-	//printf("lv = %d",p[2].lv);
-	//printf("score = %d",p[2].sc);
+	}
+	//loop for write file
+	j = 0;	
+	while (j < 5)
+	{
+		fprintf(fp, "%s %d %d\n", p[j].name, p[j].lv, p[j].sc);
+		j++;
+	}
 }
