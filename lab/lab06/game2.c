@@ -15,6 +15,12 @@
 #include <conio.h>
 #include <stdbool.h>
 
+typedef struct bullet{
+	int	bx;
+	int	by;
+	int status;
+} bullet;
+
 int		x = 38;
 int		y = 20;
 
@@ -81,33 +87,8 @@ void	move(char ch)
 		ease_ship(x,y);
 		draw_ship(++x,y);
 	}
-	/*if(ch=='w' && y > 0) 
-	{
-		ease_ship(x,y);
-		draw_ship(x,--y);
-	}
-	if(ch=='s') 
-	{
-		ease_ship(x,y);
-		draw_ship(x,++y);
-	}*/
 }
-/*
-void	bullet(int x1,int y1)
-{
-	if (bull_status && bull_status <= 5)
-	{
-		ease_bullet(x1,y1);
-		draw_bullet(x1,--y1);
-		if (y1 <= 0)
-		{
-			ease_bullet(x1,y1);
-			bull_status -= 1;
-		}
-	}
 
-}
-*/
 int main()
 {
 	setcursor(0);
@@ -116,9 +97,8 @@ int main()
 	int	x1;
 	int	y1 = 0;
 	int bull_status = 0;
-	int	bull_count = 0;
+	
 	ch = 'z';
-	ship_status = 'z';
 	draw_ship(x,y);
 	while (ch != 'x')
 	{
