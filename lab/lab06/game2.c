@@ -49,7 +49,7 @@ void	draw_bullet(int x1, int y1)
 {
 	gotoxy(x1,y1);
 	setcolor(2,4);
-	printf(":");
+	printf("^");
 	//printf("(%d,%d)",x,y);
 }
 
@@ -65,7 +65,6 @@ void	draw_ship(int x, int y)
 	gotoxy(x,y);
 	setcolor(2,4);
 	printf("<-0->");
-	//printf("(%d,%d)",x,y);
 }
 
 void	ease_ship(int x, int y)
@@ -105,17 +104,19 @@ int main()
 		if (_kbhit())
 		{
 			ch=_getch();
+			if (ch == 'a' || ch == 'd')
+				ship_status = ch;
 			if (ch == ' ' && !bull_status)
 			{
 				x1 = x+2;
 				y1 = y-1;
 				bull_status = 1;
-				bull_count += 1;
+				//bull_count += 1;
 				//printf("spb is press\n");
 			} 
 			fflush(stdin);
 		}
-		move(ch);
+		move(ship_status);
 		if (bull_status)
 		{
 			ease_bullet(x1,y1);
