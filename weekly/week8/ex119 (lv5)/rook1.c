@@ -6,7 +6,7 @@
 /*   By: ktunchar <ktunchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:24:33 by ktunchar          #+#    #+#             */
-/*   Updated: 2022/09/26 18:22:24 by ktunchar         ###   ########.fr       */
+/*   Updated: 2022/09/29 00:15:51 by ktunchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int	main(void)
 			y = ft_strjoin(y, ytoa);
 		n--;
 	}
-	printf("not be eat %lu box",(8 - strlen(x)) * (8 - strlen(y)));
+	printf("Don't be eaten %lu box",(8 - strlen(x)) * (8 - strlen(y)));
 	free(x);
 	free(y);
 	free(xtoa);
