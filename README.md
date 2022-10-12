@@ -1,4 +1,2 @@
-my-programming-fundamental
-
-65010030 - Krittithee Tuncharoen
+this repository 's for KMITL's _Programming Fundamental class
 
