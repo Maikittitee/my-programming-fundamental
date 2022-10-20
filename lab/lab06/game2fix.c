@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game2.c                                            :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maikittitee <maikittitee@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,13 +17,11 @@
 
 
 int	max = 5;
-int	pos_x[5],pos_y[5];
 int	count = 0; 
 
 typedef struct bullet{
-	int	bx;
-	int	by;
-	int status;
+	int	x;
+	int	y;
 } bullet;
 
 
@@ -48,6 +46,12 @@ void gotoxy(int x, int y)
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE) , c);
 }
 
+void show_info(int x, int y)
+{
+	gotoxy(0,0);
+	setcolor(1,0);
+	printf("x : %d\ny : %d\n",x,y);
+}
 void	draw_bullet(int x1, int y1)
 {
 	gotoxy(x1,y1);
@@ -76,27 +80,12 @@ void	ease_ship(int x, int y)
 	printf("     ");
 }
 
-//-----------------------------------------------------------
-
-void	move_ship(int *status,int *x, int *y)
-{
-	if (*x + *status > 80)
-		*status = 0;
-	if (*x + *status < 0)
-		*status = 0;
-
-	ease_ship(*x,*y);
-	*x += *status;
-	draw_ship(*x , *y);
-}
 
 int main()
 {
 	setcursor(0);
 	char	ch;
 	int	ship_status;
-	int	x1;
-	int	y1 = 0;
 	bullet bull[5];
 	int	bull_status;
 	int x =38, y = 20;
@@ -105,6 +94,7 @@ int main()
 	draw_ship(x,y);
 	while (ch != 'x')
 	{
+	show_info(x,y);
 		bull_status = 0;
 		if (_kbhit())
 		{
@@ -119,28 +109,40 @@ int main()
 				bull_status = 1;
 			fflush(stdin);
 		}
-		if (ship_status != 0)
-			move_ship(&ship_status,&x,&y);
-		if (bull_status && pos_y[count] < 0)
+		//create ship 
+		if (ship_status)
+		{
+			if (x + ship_status > 75)
+				ship_status = 0;
+			if (x + ship_status < 0)
+				ship_status = 0;
+
+			ease_ship(x,y);
+			x += ship_status;
+			draw_ship(x , y);
+		}
+	//	create bullet;
+		if (bull_status && bull[count].y < 0)
 		{
 			if (y > 0)
 			{
-				pos_x[count] = x + 2;
-				pos_y[count] = y - 1;
+				bull[count].x = x + 2;
+				bull[count].y = y - 1;
 				count++;
 				count %= max;
 				draw_bullet(x+2, y-1);
 			}
 		}
-		for(int i = 0; i < max; i++)
-		{
-			if (pos_y[i] < 0)
-				continue;
-			ease_bullet (pos_x[i],pos_y[i]);
-			pos_y[i]--;
-			if (pos_y[i] >= 0)
-				draw_bullet(pos_x[i], pos_y[i]);
-		}
+		// //Bullet update
+		// for (int i = 0; i < max; i++)
+		// {
+		// 	if (bull[i].y < 0)
+		// 		continue;
+		// 	ease_bullet (bull[i].x,bull[i].y);
+		// 	bull[i].y = bull[i].y - 1;
+		// 	if (bull[i].y >= 0)
+		// 		draw_bullet(bull[i].x, bull[i].y);
+		// }
 		Sleep(100);
 	}
 
